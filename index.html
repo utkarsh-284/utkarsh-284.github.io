@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utkarsh Bhardwaj - Data Scientist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #E8F4FD;
+            --secondary-color: #B8E0D2;
+            --accent-color: #D6EAF8;
+            --text-dark: #2C3E50;
+            --text-light: #5D6D7E;
+            --white: #FFFFFF;
+            --beige: #F5F5DC;
+            --sky-blue: #87CEEB;
+            --gradient: linear-gradient(135deg, #E8F4FD 0%, #D6EAF8 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+	    white-space: nowrap;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--sky-blue);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(135, 206, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--sky-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--sky-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--white);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: var(--sky-blue);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--beige);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--sky-blue);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 100px 0;
+            background: var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-category h3 {
+            color: var(--sky-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            background: var(--gradient);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            color: var(--sky-blue);
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card .project-type {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-impact {
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .project-impact strong {
+            color: #2E7D32;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--secondary-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-link.github {
+            background: var(--text-dark);
+            color: var(--white);
+        }
+
+        .project-link.demo {
+            background: var(--sky-blue);
+            color: var(--white);
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--beige);
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            color: var(--sky-blue);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-item i {
+            color: var(--sky-blue);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--sky-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(135, 206, 235, 0.3);
+        }
+
+        
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer .fun-fact {
+            font-style: italic;
+            color: var(--sky-blue);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness - Updated Section */
+	@media (max-width: 768px) {
+    	.nav-links {
+        	display: none;
+    	}
+
+    	.hero-content,
+    	.about-content {
+        	grid-template-columns: 1fr;
+        	gap: 2rem;
+        	text-align: center;
+    	}
+
+    	.contact-content {
+        	display: flex;
+        	flex-direction: column;
+        	align-items: center;
+        	text-align: center;
+        	gap: 2rem;
+    	}
+
+    	.hero-text h1 {
+        	font-size: 2.5rem;
+        	white-space: normal;
+    	}
+
+    	.profile-pic {
+        	width: 250px;
+        	height: 250px;
+    	}
+
+    	.stats-grid {
+        	grid-template-columns: 1fr;
+    	}
+
+    	.projects-grid {
+        	grid-template-columns: 1fr;
+    	}
+
+    	.cta-buttons {
+        	flex-direction: column;
+        	align-items: center;
+    	}
+
+    	/* Additional mobile optimizations */
+    	.contact-info {
+        	width: 100%;
+        	max-width: 500px;
+    	}
+
+    	.contact-item {
+        	margin-bottom: 1rem;
+        	padding: 0.8rem;
+    	}
+
+    	.social-links {
+        	justify-content: center;
+    	}
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="logo">Utkarsh Bhardwaj</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hello, I'm Utkarsh! 👋</h1>
+                    <p class="subtitle">Data Scientist & Economics Enthusiast</p>
+                    <p class="tagline">"From civil service dreams to data science reality - turning curiosity into insights, one dataset at a time!"</p>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            View My Projects
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-coffee"></i>
+                            Let's Connect
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="profile.jpg" alt="Utkarsh Bhardwaj" class="profile-pic">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        <strong>Plot twist:</strong> I started as an Economics student with dreams of civil service, but somewhere between studying GDP patterns and policy analysis, I discovered the fascinating world of data science! 📊
+                    </p>
+                    <p>
+                        My journey from <em>analyzing economic trends</em> to <em>building recommendation systems</em> has been quite the adventure. With a background in Economics and self-taught data science skills, I bring a unique analytical perspective that bridges business understanding with technical execution.
+                    </p>
+                    <p>
+                        Currently pursuing my M.A. in Economics while mastering NLP and LLMs, I'm like that character who multi-classes in RPGs - bringing diverse skills to solve complex problems! When I'm not wrangling data, you'll find me vibing to hip-hop or catching up on the latest anime series.
+                    </p>
+                    <p>
+                        <strong>Ready to contribute my analytical mindset and fresh perspective to your data science team!</strong>
+                    </p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">800K+</span>
+                        <span class="stat-label">Data Points Analyzed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">91%</span>
+                        <span class="stat-label">Best Model Accuracy</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Curiosity Level</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-bar"></i> Data Analysis & ML</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Regression</span>
+                        <span class="skill-tag">Classification</span>
+                        <span class="skill-tag">Clustering</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-language"></i> NLP & AI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">BERT</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">LLMs</span>
+                        <span class="skill-tag">Sentiment Analysis</span>
+                        <span class="skill-tag">Text Processing</span>
+                        <span class="skill-tag">Transformers</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Data & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-pie"></i> Statistical Analysis</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Hypothesis Testing</span>
+                        <span class="skill-tag">A/B Testing</span>
+                        <span class="skill-tag">Time Series</span>
+                        <span class="skill-tag">Forecasting</span>
+                        <span class="skill-tag">Regression Analysis</span>
+                    </div>
+                </div>
+		<div class="skill-category">
+   		     <h3><i class="fas fa-chart-line"></i> Economics & Econometrics</h3>
+   		           <div class="skill-tags">
+        			<span class="skill-tag">Economic Modeling</span>
+        			<span class="skill-tag">Econometrics</span>
+        			<span class="skill-tag">Policy Analysis</span>
+        			<span class="skill-tag">Market Research</span>
+        			<span class="skill-tag">Business Strategy</span>
+        			<span class="skill-tag">Causal Inference</span>
+    		     </div>
+		</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- Movie Recommendation System -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🎬</div>
+                        <h3>AI-Powered Movie Recommendation Engine</h3>
+                        <p class="project-type">NLP • Deep Learning • API Development</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Engineered a sophisticated content-based recommendation system leveraging BERT transformers to understand user preferences at a semantic level. Think Netflix's algorithm, but built from scratch with cutting-edge NLP!
+                        </p>
+                        <div class="project-impact">
+                            <strong>🎯 Business Impact:</strong> Demonstrates end-to-end ML pipeline development, from data preprocessing to production deployment - exactly what companies need for recommendation systems and personalization engines.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">BERT</span>
+                            <span class="tech-tag">Transformers</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/utkarsh-284/Movie-Recommendation-System" class="project-link github">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                            <a href="#" class="project-link demo">
+                                <i class="fas fa-play"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit Default Prediction -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">💳</div>
+                        <h3>Credit Risk Assessment Model</h3>
+                        <p class="project-type">Machine Learning • Risk Analytics • FinTech</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Built a production-ready credit default prediction model achieving 82% accuracy on highly imbalanced financial data. Implemented advanced techniques for handling class imbalance and feature engineering.
+                        </p>
+                        <div class="project-impact">
+                            <strong>💰 Business Value:</strong> Directly applicable to FinTech and banking - could potentially save millions by identifying high-risk applicants while maintaining fair lending practices.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">Feature Engineering</span>
+                            <span class="tech-tag">SMOTE</span>
+                            <span class="tech-tag">Cross-validation</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/utkarsh-284/Credit-Default-Risk" class="project-link github">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="#" class="project-link demo">
+                                <i class="fas fa-chart-line"></i> Model Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bike Share Revenue Strategy -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🚴</div>
+                        <h3>Revenue Optimization through Customer Analytics</h3>
+                        <p class="project-type">Business Intelligence • Customer Segmentation • R</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Performed comprehensive analysis of 800K+ bike-sharing transactions using advanced clustering algorithms and customer segmentation techniques to identify revenue growth opportunities.
+                        </p>
+                        <div class="project-impact">
+                            <strong>📈 ROI Impact:</strong> Strategic recommendations projected to increase customer retention by 15% and boost annual revenue by ~10% - showcasing ability to translate data insights into business value.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">R</span>
+                            <span class="tech-tag">Tidyverse</span>
+                            <span class="tech-tag">ggplot2</span>
+                            <span class="tech-tag">K-means Clustering</span>
+                            <span class="tech-tag">RFM Analysis</span>
+                            <span class="tech-tag">Data Visualization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/utkarsh-284/Cyclistic-Case-Study" class="project-link github">
+                                <i class="fab fa-github"></i> R Scripts
+                            </a>
+                            <a href="#" class="project-link demo">
+                                <i class="fas fa-presentation"></i> Business Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Sentiment Analysis -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">📰</div>
+                        <h3>Financial News Sentiment Intelligence</h3>
+                        <p class="project-type">NLP • API Development • Currently Building</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Developing an advanced NLP system to analyze financial news sentiment and predict market movements. Complete with real-time data processing, FastAPI deployment, and containerized architecture.
+                        </p>
+                        <div class="project-impact">
+                            <strong>🚀 Innovation Factor:</strong> Combines domain expertise in economics with cutting-edge NLP - perfect for FinTech roles requiring both technical skills and financial market understanding.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">BERT</span>
+                            <span class="tech-tag">Sentiment Analysis</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Financial Data</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/utkarsh-284" class="project-link github">
+                                <i class="fab fa-github"></i> Coming Soon
+                            </a>
+                            <a href="#" class="project-link demo">
+                                <i class="fas fa-code"></i> In Development
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BCG Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🏢</div>
+                        <h3>BCG Corporate Challenge: Customer Churn Analytics</h3>
+                        <p class="project-type">Consulting Project • Predictive Modeling • Business Strategy</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Completed BCG's data science simulation, building a customer churn prediction model with 91% accuracy and delivering executive-level insights for strategic business decisions.
+                        </p>
+                        <div class="project-impact">
+                            <strong>🎯 Consulting Excellence:</strong> Demonstrates ability to work on real consulting projects, communicate complex findings to executives, and drive business decisions with data.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Business Intelligence</span>
+                            <span class="tech-tag">Executive Reporting</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/utkarsh-284" class="project-link github">
+                                <i class="fab fa-github"></i> Analysis Code
+                            </a>
+                            <a href="#" class="project-link demo">
+                                <i class="fas fa-briefcase"></i> BCG Certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real Estate Price Prediction -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🏠</div>
+                        <h3>Real Estate Price Optimization Model</h3>
+                        <p class="project-type">Regression Analysis • Feature Engineering • Market Intelligence</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Developed a robust housing price prediction model using advanced feature engineering and K-Fold cross-validation. Achieved high R² accuracy for competitive market pricing strategies.
+                        </p>
+                        <div class="project-impact">
+                            <strong>🏡 Market Application:</strong> Directly applicable to PropTech and real estate analytics - demonstrates ability to handle complex market data and build reliable pricing models.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Linear Regression</span>
+                            <span class="tech-tag">Feature Engineering</span>
+                            <span class="tech-tag">K-Fold Validation</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Market Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/utkarsh-284/House_price_prediction" class="project-link github">
+                                <i class="fab fa-github"></i> Model Code
+                            </a>
+                            <a href="#" class="project-link demo">
+                                <i class="fas fa-home"></i> Price Predictor
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect!</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p style="margin-bottom: 2rem;">Ready to discuss data science, economics, or the latest anime episode? I'm always excited to connect with fellow data enthusiasts and potential collaborators!</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:ubhardwaj284@gmail.com" style="color: var(--text-light); text-decoration: none;">ubhardwaj284@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong><br>
+                            <span style="color: var(--text-light);">+91 9643269849</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Location</strong><br>
+                            <span style="color: var(--text-light);">Faridabad, Haryana, India</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/utkarsh284/" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/utkarsh-284" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:ubhardwaj284@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Utkarsh Bhardwaj. All rights reserved.</p>
+            <p class="fun-fact">Built with passion, data, and a lot of coffee ☕</p>
+            <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--text-light);">
+                "In data we trust, in insights we grow" 📈
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scrolling and interactions -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Project card hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Stats counter animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = stat.textContent;
+                if (target === '∞') return;
+                
+                const finalNumber = parseInt(target.replace(/[^\d]/g, ''));
+                let current = 0;
+                const increment = finalNumber / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= finalNumber) {
+                        current = finalNumber;
+                        clearInterval(timer);
+                    }
+                    
+                    if (target.includes('K')) {
+                        stat.textContent = Math.floor(current) + 'K+';
+                    } else if (target.includes('%')) {
+                        stat.textContent = Math.floor(current) + '%';
+                    } else {
+                        stat.textContent = Math.floor(current) + '+';
+                    }
+                }, 50);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stats-grid')) {
+                        animateStats();
+                    }
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for scroll animations
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Observe stats grid specifically
+        const statsGrid = document.querySelector('.stats-grid');
+        if (statsGrid) {
+            observer.observe(statsGrid);
+        }
+
+        // Add typing effect to hero title
+        const heroTitle = document.querySelector('.hero-text h1');
+        const originalText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                heroTitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        };
+        
+        // Start typing effect after page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 300);
+        });
+    </script>
+</body>
+</html>
